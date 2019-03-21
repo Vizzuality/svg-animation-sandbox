@@ -1,25 +1,24 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import lottie from 'lottie-web';
 
 class App extends Component {
+  componentDidMount() {
+    lottie.loadAnimation({
+      wrapper: this.wrapper,
+      animType: 'svg',
+      loop: true,
+      path: './data.json'
+    })
+  }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <h3>
+          Place your data.json file in the public folder and it will show below.
+        </h3>
+        <div ref={ref => this.wrapper = ref} id="svg-container"></div>
       </div>
     );
   }
